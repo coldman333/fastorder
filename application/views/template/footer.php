@@ -2,6 +2,7 @@
         <script>window.jQuery || document.write('<script src="_/js/libs/jquery-1.10.1.min.js"><\/script>')</script>
         <script src="_/js/libs/bootstrap.min.js"></script>
         <script src="_/js/libs/knockout.min.js"></script>
+        <script src="_/js/libs/sammy.min.js"></script>
         <script src="_/js/main.js"></script>
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
