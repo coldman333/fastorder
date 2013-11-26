@@ -112,13 +112,44 @@ class Place extends REST_Controller
         }
     }
 
+    function dishs_get()
+    {
+        $query=$this->db->get('dich');
+        $cafeArr = array() ;
+        foreach ($query->result() as $row)
+        {
+            $tempArr = array(
+                "id" => $row->id,
+                "name" => $row->name,
+                "price"=> $row->comment,
+                "address" => $row->address,
+                "locality" => $row->locality,
+                "district" => $row->district,
+                "metro" => $row->metro,
+                "house" => $row->house,
+                "placeXY" => $row->placeXY,
+                "phone" => $row->phone,
+            );
+            array_push( $cafeArr,$tempArr );
+        }
+
+        if($cafeArr)
+        {
+            $this->response($cafeArr, 200); // 200 being the HTTP response code
+        }
+
+        else
+        {
+            $this->response(array('error' => 'Couldn\'t find any cafe!'), 404);
+        }
+    }
+
+
 
 	public function send_post()
 	{
 		var_dump($this->request->body);
 	}
-
-
 	public function send_put()
 	{
 		var_dump($this->put('foo'));
