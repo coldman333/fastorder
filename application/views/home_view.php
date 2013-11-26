@@ -10,20 +10,20 @@
                 <div class="col-xs-4">
 
                     <div  class="list-group" data-bind="foreach: cafes">
-                            <a class="list-group-item"  data-bind="text:name, attr: { href: url()}, click: $parent.goToCafe "> </a>
+                            <a class="list-group-item"  data-bind="text:name, attr: { href: url }, click: $parent.carrentCafe "> </a>
                     </div>
 
                 </div>
 
                 <div class="col-xs-8">
 
-                    <div >
+                    <div  data-bind="with : carrentCafe">
 
-                            <h1 data-bind="text: carrentCafe.name"></h1>
-                            <div data-bind="text : carrentCafe.description"></div>
-                            <b data-bind="text : carrentCafe.house"></b>
-                            <br/>
-                            <b data-bind="text : carrentCafe.metro"></b>
+                        <h1 data-bind="text:name"></h1>
+                        <div data-bind="html : description"></div>
+                        <span class="glyphicon glyphicon-tree-conifer"></span> <b data-bind="text :house"></b>
+                        <br/>
+                        <span class="glyphicon glyphicon-road"></span> <b data-bind="text : metro"></b>
 
                     </div>
 

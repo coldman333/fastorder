@@ -9,34 +9,25 @@
 
 function CafeModel(id,name,description ,address, locality, district, metro, house,placeXY, phone) {
    'use strict';
-//    var
-//        id = ko.observable(),
-//        name = ko.observable(),
-//        address = ko.observable(),
-//        locality = ko.observable(),
-//        district = ko.observable(),
-//        metro = ko.observable(),
-//        house = ko.observable(),
-//        placeXY = ko.observable(),
-//        phone = ko.observable(),
-//        description = ko.observable();
+
  function url(){
-      return "#/cafe/"+id;
+      return "#cafe/"+id;
   };
 
 
     return {
-        id:id,
-        name:name,
-        address:name,
-        locality:locality,
-        district:district,
-        metro:metro,
-        house:house,
-        placeXY:placeXY,
-        phone:phone,
-        description:description,
-        url:url
+        id:ko.observable(id),
+        name:ko.observable(name),
+        address:ko.observable(name),
+        locality:ko.observable(locality),
+        district:ko.observable(district),
+        metro:ko.observable(metro),
+        house:ko.observable(house),
+        placeXY:ko.observable(placeXY),
+        phone:ko.observable(phone),
+        description:ko.observable(description),
+        url:url()
     }
 }
+
 
