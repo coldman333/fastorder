@@ -3,6 +3,11 @@
         <script src="_/js/libs/bootstrap.min.js"></script>
         <script src="_/js/libs/knockout.min.js"></script>
         <script src="_/js/libs/sammy.min.js"></script>
+
+
+        <script src="/_/js/model/cafe.js"></script>
+        <script src="/_/js/viewmodel/cafe_view.js"></script>
+
         <script src="_/js/main.js"></script>
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
