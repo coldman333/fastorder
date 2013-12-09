@@ -37,7 +37,7 @@ define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 
-define('TEPMLATE_URL_FRONTEND',		'template/template');
+define('TEPMLATE_URL_FRONTEND', 'template/template');
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

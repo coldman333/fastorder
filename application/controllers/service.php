@@ -6,6 +6,7 @@ class Service extends CI_Controller {
     public function index()
     {
         $data["main_content"] = "service_view";
+        $data["custom_css"] = "service.css";
         $this->load->view(TEPMLATE_URL_FRONTEND, $data);
     }
 }

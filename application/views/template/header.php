@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="stylesheet" href="_/css/bootstrap.min.css">
         <link rel="stylesheet" href="_/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="_/css/main.css">
+        <link rel="stylesheet" href="_/css/<?=$custom_css?>">
         <script src="_/js/libs/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
     <body>
