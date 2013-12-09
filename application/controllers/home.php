@@ -15,6 +15,7 @@ class Home extends CI_Controller {
         $data["main_content"] = "home_view";
         $data["custom_css"] = "main.css";
         $data["custom_js_list"] = [
+            0 => 'main.js',
             1 => 'model/cafe.js',
             2 => 'viewmodel/cafe_view.js'
         ];
