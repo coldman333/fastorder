@@ -4,11 +4,9 @@
         <script src="_/js/libs/knockout.min.js"></script>
         <script src="_/js/libs/sammy.min.js"></script>
 
-
-        <script src="/_/js/model/cafe.js"></script>
-        <script src="/_/js/viewmodel/cafe_view.js"></script>
-
-        <script src="_/js/main.js"></script>
+        <? foreach ($custom_js_list AS $js_item) : ?>
+            <script src="/_/js/<?=$js_item?>"></script>
+        <? endforeach; ?>
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

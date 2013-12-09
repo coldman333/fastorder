@@ -7,6 +7,7 @@ class Service extends CI_Controller {
     {
         $data["main_content"] = "service_view";
         $data["custom_css"] = "service.css";
+        $data["custom_js"] = [];
         $this->load->view(TEPMLATE_URL_FRONTEND, $data);
     }
 }
