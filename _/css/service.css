@@ -8,16 +8,20 @@ header {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-.order_item {
+.order {
+
+}
+.order_data {
     background-color: #eee;
     box-shadow: 2px 2px 2px #aaa;
 }
-.order_item_controls {
-    padding-bottom: 15px;
+.order_data{
     padding-top: 15px;
-    padding-right: 30px;
 }
-.status_new {
+.order_status_new {
     background-color: #D43F3A;
     height: 3px;
+}
+.order_controls {
+    padding-bottom: 15px;
 }
