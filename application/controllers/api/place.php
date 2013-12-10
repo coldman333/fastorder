@@ -18,6 +18,31 @@ require APPPATH.'/libraries/REST_Controller.php';
 
 class Place extends REST_Controller
 {
+
+
+    function getDistance($lat1, $lon1, $lat2, $lon2) {
+        $lat1 *= M_PI / 180;
+        $lat2 *= M_PI / 180;
+        $lon1 *= M_PI / 180;
+        $lon2 *= M_PI / 180;
+
+        $d_lon = $lon1 - $lon2;
+
+        $slat1 = sin($lat1);
+        $slat2 = sin($lat2);
+        $clat1 = cos($lat1);
+        $clat2 = cos($lat2);
+        $sdelt = sin($d_lon);
+        $cdelt = cos($d_lon);
+
+        $y = pow($clat2 * $sdelt, 2) + pow($clat1 * $slat2 - $slat1 * $clat2 * $cdelt, 2);
+        $x = $slat1 * $slat2 + $clat1 * $clat2 * $cdelt;
+
+        return atan2(sqrt($y), $x) * 6372795;
+    }
+
+
+
 	function cafe_get()
     {
         if(!$this->get('id'))
@@ -42,7 +67,6 @@ class Place extends REST_Controller
                 "house" => $row->house,
                 "placeXY" => $row->placeXY,
                 "phone" => $row->phone
-
             );
             // array_push( $cafeArr,$tempArr );
         }
@@ -80,6 +104,16 @@ class Place extends REST_Controller
     
     function cafes_get()
     {
+        $posON = false;
+        $posLatitude = 0;
+        $posLongitude = 0;
+
+        if($this->get('lat') && $this->get('long')){
+            $posON =  true;
+            $posLatitude = $this->get('lat');
+            $posLongitude = $this->get('long');
+        }
+
 
         $query=$this->db->get('cafe');
         $cafeArr = array() ;
@@ -95,9 +129,14 @@ class Place extends REST_Controller
                 "metro" => $row->metro,
                 "house" => $row->house,
                 "placeXY" => $row->placeXY,
-                "phone" => $row->phone,
-
+                "phone" => $row->phone
             );
+
+            if ($posON){
+                $placeXYArr = explode(",",$row->placeXY);
+                $tempArr['position'] =  @round(($this->getDistance($posLatitude, $posLongitude, $placeXYArr[0], $placeXYArr[1]))/1000,2);
+            }
+
             array_push( $cafeArr,$tempArr );
         }
 
@@ -114,21 +153,22 @@ class Place extends REST_Controller
 
     function dishs_get()
     {
-        $query=$this->db->get('dich');
+
+        if(!$this->get('id'))
+        {
+            $this->response(NULL, 400);
+        }
+        $this->db->where('id',$this->get('id'));
+        $query=$this->db->get('dish');
         $cafeArr = array() ;
         foreach ($query->result() as $row)
         {
             $tempArr = array(
                 "id" => $row->id,
-                "name" => $row->name,
-                "price"=> $row->comment,
-                "address" => $row->address,
-                "locality" => $row->locality,
-                "district" => $row->district,
-                "metro" => $row->metro,
-                "house" => $row->house,
-                "placeXY" => $row->placeXY,
-                "phone" => $row->phone,
+                "cafeId" => $row->cafeId,
+                "name"=> $row->name,
+                "price" => $row->price,
+                "pictureName" => $row->pictureName
             );
             array_push( $cafeArr,$tempArr );
         }
@@ -144,6 +184,42 @@ class Place extends REST_Controller
         }
     }
 
+    function dishes_get()
+    {
+        if(!$this->get('id'))
+        {
+            $this->response(NULL, 400);
+        }
+
+        $this->db->where('cafeId',$this->get('id'));
+        $query=$this->db->get('dish');
+
+        $cafeArr = array() ;
+        foreach ($query->result() as $row)
+        {
+            $tempArr = array(
+                "id" => $row->id,
+                "cafeId" => $row->cafeId,
+                "name"=> $row->name,
+                "price" => $row->price,
+                "pictureName" => $row->pictureName,
+                "dishesType" => ""
+            );
+             array_push( $cafeArr,$tempArr );
+        }
+
+
+
+        if($cafeArr)
+        {
+            $this->response($cafeArr, 200); // 200 being the HTTP response code
+        }
+
+        else
+        {
+            $this->response(array('error' => 'Cafe could not be found'), 404);
+        }
+    }
 
 
 	public function send_post()
@@ -154,4 +230,9 @@ class Place extends REST_Controller
 	{
 		var_dump($this->put('foo'));
 	}
+
+
+
+
+
 }

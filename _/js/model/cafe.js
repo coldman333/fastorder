@@ -7,15 +7,14 @@
  */
 
 
-function CafeModel(id,name,description ,address, locality, district, metro, house,placeXY, phone) {
+function CafeModel(id,name,description ,address, locality, district, metro, house,placeXY, phone, position) {
    'use strict';
 
- function url(){
-      return "#cafe/"+id;
-  };
+   function url(){
+          return "#cafe/"+id;
+   }
 
-
-    return {
+   return {
         id:ko.observable(id),
         name:ko.observable(name),
         address:ko.observable(name),
@@ -26,8 +25,9 @@ function CafeModel(id,name,description ,address, locality, district, metro, hous
         placeXY:ko.observable(placeXY),
         phone:ko.observable(phone),
         description:ko.observable(description),
+        position:ko.observable(position),
         url:url()
-    }
+   }
 }
 
 

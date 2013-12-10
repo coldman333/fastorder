@@ -14,11 +14,13 @@ class Home extends CI_Controller {
     {
         $data["main_content"] = "home_view";
         $data["custom_css"] = "main.css";
-        $data["custom_js_list"] = [
-            0 => 'main.js',
-            1 => 'model/cafe.js',
-            2 => 'viewmodel/cafe_view.js'
-        ];
+        $data["custom_js_list"] = array(
+             'model/cafe.js',
+             'model/dish.js',
+             'viewmodel/cafe_view.js',
+             'viewmodel/dish_view.js',
+             'main.js',
+        );
         $this->load->view(TEPMLATE_URL_FRONTEND, $data);
     }
 }
