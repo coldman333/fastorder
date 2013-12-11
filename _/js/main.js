@@ -106,26 +106,22 @@
     Sammy(function() {
 
         this.get('#cafe/:cafeId', function() {
-
             $("section").hide();
             $("#loader").show();
             loadDishData(this.params['cafeId']);
+            $("section").loader();
             $("#dishCont").show();
-
         });
 
         this.get('', function() {
-          
            if(!hasLocation) {
                getYourLocation();
             }
            if(!hasData){
-
                 Q.delay(1300).then(function(){
                     loadData();
                 });
             } else {
-
              $("section").hide();
              $("#loader").hide();
              $("#cafeCont").show();

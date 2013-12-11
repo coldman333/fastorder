@@ -9,12 +9,22 @@
 function DishesModel(id,cafeId,name ,price, pictureName, type) {
     'use strict';
 
+    var
+        id = ko.observable(),
+        cafeId = ko.observable(),
+        name = ko.observable(),
+        price = ko.observable(price),
+        pictureName = ko.observable(pictureName),
+        type = ko.observable(type),
+        count = ko.observable(null);
+
     return {
-        id:ko.observable(id),
-        cafeId:ko.observable(cafeId),
-        name:ko.observable(name),
-        price:ko.observable(price),
-        pictureName:ko.observable(pictureName),
-        dishesType:ko.observable(type)
+        id:id,
+        cafeId:cafeId,
+        name:name,
+        price:price,
+        pictureName:pictureName,
+        type:type,
+        count:count
     }
 }

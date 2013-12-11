@@ -9,7 +9,6 @@ body { background: url(/_/img/bg.gif)}
 
 
 
-
 .view_title{
 	font-family:  "Helvetica World", "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
 	font-size:18px;
@@ -20,7 +19,7 @@ body { background: url(/_/img/bg.gif)}
 		
 /*DATAVIEW (menu categories)*/
 .dhx_dataview{
-	background:url('../imgs/bg.gif');
+	background:url('../img/bg.gif');
 }
  
 .dhx_dataview .dhx_dataview_default_item,.dhx_dataview .dhx_dataview_default_item_selected{
@@ -129,9 +128,7 @@ body { background: url(/_/img/bg.gif)}
 }
 		
 .landscape_body {
-	width: 468px;
-	height: 150px;
-	float: left;
+
 }
 		
 .landscape_buy {
@@ -292,13 +289,29 @@ body { background: url(/_/img/bg.gif)}
 }
 .order_row{
 	overflow-y:hidden !important;
-	background:url('../imgs/bg.gif');
+	background:url('../img/bg.gif');
+}
+body { padding:  0 0 80px}
+.footerFixed { position: fixed;
+    bottom: 0; left:0; right: 0;
+    padding: 10px 30px;
+    text-align: center;
+    background: url(/_/img/bg.gif);
+    border-top:1px solid #fff;
+    color:#fff;
 }
 
 
+.dhx_dataview_item { height: 125px; margin: 5px; display: inline-block}
+
+@media (min-width: 992px) {
+    .dhx_dataview_item { display: block  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
 
 
 
 
-
+}
 
