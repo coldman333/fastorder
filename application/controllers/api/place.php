@@ -203,7 +203,7 @@ class Place extends REST_Controller
                 "name"=> $row->name,
                 "price" => $row->price,
                 "pictureName" => $row->pictureName,
-                "dishesType" => ""
+                "typeId" => $row->typeId
             );
              array_push( $cafeArr,$tempArr );
         }

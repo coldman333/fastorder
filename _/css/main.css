@@ -1,7 +1,7 @@
 
 
 body { background: url(/_/img/bg.gif)}
-#loader { position: absolute; height: 32px; width: 32px; margin: -16px 0 0 -16px; top:50%; left:50%; background: url('/_/img/loader.gif') no-repeat}
+#loader { position: absolute; height: 48px; width: 48px; margin: -24px 0 0 -24px;opacity: .7; top:50%; left:50%; background: url('/_/img/loader.gif') no-repeat -7px top; border-radius: 7px}
 
 
 
@@ -292,6 +292,7 @@ body { background: url(/_/img/bg.gif)}
 	background:url('../img/bg.gif');
 }
 body { padding:  0 0 80px}
+
 .footerFixed { position: fixed;
     bottom: 0; left:0; right: 0;
     padding: 10px 30px;
@@ -302,6 +303,9 @@ body { padding:  0 0 80px}
 }
 
 
+.groupe_active { background: none; border: none; box-shadow: none}
+
+
 .dhx_dataview_item { height: 125px; margin: 5px; display: inline-block}
 
 @media (min-width: 992px) {
@@ -309,9 +313,5 @@ body { padding:  0 0 80px}
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-
-
-
-
 }
 

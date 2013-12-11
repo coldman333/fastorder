@@ -158,3 +158,12 @@ INSERT INTO `dish` (`id`, `cafeId`, `name`, `price`, `pictureName`) VALUES
 (340, 2, 'Борщ', 40, NULL),
 (378, 37, 'Суп куриный с домашней лапшой и фрикадельками', 52, NULL),
 (379, 37, 'Лагман', 75, NULL);
+
+
+
+/* alters */
+
+ALTER TABLE  `dish` ADD  `typeId` INT NOT NULL;
+
+
+UPDATE `fastorder`.`dish` SET `typeId` = '1' WHERE `dish`.`id` = 2;

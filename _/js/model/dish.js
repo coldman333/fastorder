@@ -1,22 +1,20 @@
-/**
- * Created with JetBrains PhpStorm.
- * User: vova
- * Date: 11/26/13
- * Time: 1:04 AM
- * To change this template use File | Settings | File Templates.
- */
 
-function DishesModel(id,cafeId,name ,price, pictureName, type) {
+
+function DishesModel(id,cafeId,name ,price, pictureName, typeId) {
     'use strict';
-
     var
-        id = ko.observable(),
-        cafeId = ko.observable(),
-        name = ko.observable(),
+        id = ko.observable(id),
+        cafeId = ko.observable(cafeId),
+        name = ko.observable(name),
         price = ko.observable(price),
         pictureName = ko.observable(pictureName),
-        type = ko.observable(type),
-        count = ko.observable(null);
+        typeId = ko.observable(typeId),
+        count = ko.observable(null),
+        select =  ko.observable(false);
+
+        function isSelected(){
+          return (select())? "dhx_list_content_item_selected":"dhx_list_content_item";
+        }
 
     return {
         id:id,
@@ -24,7 +22,10 @@ function DishesModel(id,cafeId,name ,price, pictureName, type) {
         name:name,
         price:price,
         pictureName:pictureName,
-        type:type,
-        count:count
+        typeId:typeId,
+        count:count,
+        select:select,
+        isSelected:isSelected
+
     }
 }

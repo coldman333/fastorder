@@ -75,7 +75,7 @@
                       data[i].name,
                       data[i].price,
                       data[i].pictureName,
-                      data[i].dishesType
+                      data[i].typeId
                   ) ;
                   arr.push(temp)
               }
@@ -109,7 +109,7 @@
             $("section").hide();
             $("#loader").show();
             loadDishData(this.params['cafeId']);
-            $("section").loader();
+            $("section").hide();
             $("#dishCont").show();
         });
 
@@ -125,7 +125,6 @@
              $("section").hide();
              $("#loader").hide();
              $("#cafeCont").show();
-
             }
 
         });
