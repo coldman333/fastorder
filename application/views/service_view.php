@@ -25,7 +25,6 @@
                         <div class="btn-group btn-group-justified">
                             <a href="#" class="btn btn-default btn-primary" data-bind="click: "><i class="glyphicon glyphicon-eye-open"></i></a>
                             <a href="#" class="btn btn-default btn-success" data-bind="click: "><i class="glyphicon glyphicon-ok"></i></a>
-                            <a href="#" class="btn btn-default btn-warning" data-bind="click: "><i class="glyphicon glyphicon-pencil"></i></a>
                             <a href="#" class="btn btn-default btn-danger" data-bind="click: "><i class="glyphicon glyphicon-remove"></i></a>
                         </div>
                     </div>
