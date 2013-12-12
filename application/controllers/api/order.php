@@ -18,25 +18,25 @@ require APPPATH.'/libraries/REST_Controller.php';
 
 class Order extends REST_Controller {
     function orders_get() {
-        $order = [];
+        $order = array();
         $query1 = $this->db->get('order');
         foreach ($query1->result() AS $row) {
             $order_tmp['id'] = $row->id;
             $order_tmp['table'] = $row->table;
             $order_tmp['cafe_id'] = $row->cafe_id;
 
-            $query2 = $this->db->get_where('cafe', ['id' => $order_tmp['cafe_id']]);
+            $query2 = $this->db->get_where('cafe', array('id' => $order_tmp['cafe_id']));
             $row = $query2->row();
             $order_tmp['cafe_name'] = $row->name;
 
-            $order_item = [];
-            $query3 = $this->db->get_where('order_items', ['order_id' => $order_tmp['id']]);
+            $order_item =array();
+            $query3 = $this->db->get_where('order_items', array('order_id' => $order_tmp['id']));
             foreach ($query3->result() AS $row) {
                 $order_item['id'] = $row->id;
                 $order_item['dish_id'] = $row->dish_id;
                 $order_item['quantity'] = $row->quantity;
 
-                $query4 = $this->db->get_where('dish', ['id' => $order_item['dish_id']]);
+                $query4 = $this->db->get_where('dish', array('id' => $order_item['dish_id']));
                 $row = $query4->row();
                 $order_item['dish_name'] = $row->name;
             }
@@ -48,5 +48,11 @@ class Order extends REST_Controller {
         } else {
             $this->response(array('error' => 'No orders found!'), 404);
         }
+    }
+
+    function order_post()
+    {
+        $message = array('message' => 'ADDED!');
+        $this->response("ok", 200); // 200 being the HTTP response code
     }
 }

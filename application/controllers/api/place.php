@@ -87,8 +87,6 @@ class Place extends REST_Controller
     function cafe_post()
     {
 
-
-        //$this->some_model->updateUser( $this->get('id') );
         $message = array('id' => $this->get('id'), 'name' => $this->post('name'), 'email' => $this->post('email'), 'message' => 'ADDED!');
         
         $this->response($message, 200); // 200 being the HTTP response code
@@ -96,7 +94,7 @@ class Place extends REST_Controller
     
     function cafe_delete()
     {
-    	//$this->some_model->deletesomething( $this->get('id') );
+
         $message = array('id' => $this->get('id'), 'message' => 'DELETED!');
         // todo db del item
         $this->response($message, 200); // 200 being the HTTP response code

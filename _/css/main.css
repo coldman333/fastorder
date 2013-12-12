@@ -308,10 +308,22 @@ body { padding:  0 0 80px}
 
 .dhx_dataview_item { height: 125px; margin: 5px; display: inline-block}
 
+.tapeTabs .menu_content_description { display: none}
+.tapeTabs .menu_content { float: none; clear: both}
+.tapeTabs .menu_img { float: left;}
+.dhx_dataview_item { height: auto; }
+
 @media (min-width: 992px) {
+
     .dhx_dataview_item { display: block  }
+    .tapeTabs .menu_content_description { display: block}
+    .tapeTabs .menu_content { float: left; clear: none}
+    .tapeTabs .menu_img { float: left;}
+    .dhx_dataview_item { height: 125px; }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
+
+
 }
 

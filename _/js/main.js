@@ -12,13 +12,18 @@
         };
 
         function geo_success(position) {
+
+
             pos1 = position.coords.latitude
             pos2 = position.coords.longitude;
-            hasLocation = true
+            $("#locInfo").show().addClass("alert alert-success").html("Your location  " +pos1+" , " +pos2 );
+
+            hasLocation = true;
         }
 
         function geo_error() {
-            alert("Sorry, no position available.");
+            $("#locInfo").show().addClass("alert alert-danger").html("Sorry, no position available.");
+            //alert("Sorry, no position available.");
         }
 
        function getYourLocation(){
@@ -62,56 +67,51 @@
         });
 
 }
-
-      function loadDishData(cafeId){
-
-          var request = $.getJSON("/api/place/dishes/id/"+cafeId);
-          var chained = request.then(function( data ) {
-              var arr = [];
-              for(var i =0; i<data.length; i++){
-                  var temp = new DishesModel(
-                      data[i].id,
-                      data[i].cafeId,
-                      data[i].name,
-                      data[i].price,
-                      data[i].pictureName,
-                      data[i].typeId
-                  ) ;
-                  arr.push(temp)
-              }
-              return arr ;
-          });
-
-          chained.done(function( data ) {
-              var dishesViewModel = new DishesViewModel(data);
-              var el = document.getElementById('dishCont');
-              ko.applyBindings(dishesViewModel, el);
-
-              $("section").hide();
-              $("#loader").hide();
-              $("#dishCont").show();
-          });
-
-          chained.fail(function( data ) {
-                $("section").hide();
-                $("#loader").hide();
-                $("#cafeCont").show();
-                 location.hash = "";
-
-                alert(" В этом кафе кушать нечего \n выберете  другое");
-
-          });
-      }
+//
+//      function loadDishData(cafeId){
+//
+//          var request = $.getJSON("/api/place/dishes/id/"+cafeId);
+//          var chained = request.then(function( data ) {
+//              var arr = [];
+//              for(var i =0; i<data.length; i++){
+//                  var temp = new DishesModel(
+//                      data[i].id,
+//                      data[i].cafeId,
+//                      data[i].name,
+//                      data[i].price,
+//                      data[i].pictureName,
+//                      data[i].typeId
+//                  ) ;
+//                  arr.push(temp)
+//              }
+//              return arr ;
+//          });
+//
+//          chained.done(function( data ) {
+//              var dishesViewModel = new DishesViewModel(data);
+//              var el = document.getElementById('dishCont');
+//              ko.applyBindings(dishesViewModel, el);
+//
+//              $("section").hide();
+//              $("#loader").hide();
+//              $("#dishCont").show();
+//          });
+//
+//          chained.fail(function( data ) {
+//                $("section").hide();
+//                $("#loader").hide();
+//                $("#cafeCont").show();
+//                 location.hash = "";
+//                alert(" В этом кафе кушать нечего \n выберете  другое");
+//
+//          });
+//      }
 
     Sammy(function() {
 
-        this.get('#cafe/:cafeId', function() {
-            $("section").hide();
-            $("#loader").show();
-            loadDishData(this.params['cafeId']);
-            $("section").hide();
-            $("#dishCont").show();
-        });
+       this.get('#cafe/:cafeId', function() {
+
+       });
 
         this.get('', function() {
            if(!hasLocation) {
@@ -122,9 +122,11 @@
                     loadData();
                 });
             } else {
+
              $("section").hide();
              $("#loader").hide();
              $("#cafeCont").show();
+
             }
 
         });
