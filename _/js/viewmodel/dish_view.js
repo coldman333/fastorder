@@ -11,15 +11,12 @@ function DishesViewModel(dishes){
     /* operations */
     self.removeItemOrderList = function (id) {
         self.orderList.remove(function(order) {
-
             if(order.id() == id && self.orderListDEL == true) {
                 self.orderListDEL = false;
                 return true;
             }else {
                 return false;
             }
-
-
         });
     };
 
@@ -53,11 +50,13 @@ function DishesViewModel(dishes){
             if( el.id() == self.orderList()[i].id() ){
                 self.orderListDEL = true;
                 self.removeItemOrderList(el.id());
-
                 return true;
             }
 
         }
+
+
+
 
         return true;
     };
@@ -118,8 +117,9 @@ function DishesViewModel(dishes){
 
            $("section").hide();
            $("#loader").show();
-            self.dishes([]);
             $.get("/api/place/dishes/", { id: this.params.cafeId }, function(data){
+                 self.dishes([]);
+                 self.dishesFiltered([]);
                 for(var i =0; i<data.length; i++){
                     var temp = new DishesModel(
                         data[i].id,
@@ -137,6 +137,12 @@ function DishesViewModel(dishes){
 
         });
     });
+
+
+    $('#myModal').on('hidden.bs.modal', function (e) {
+  
+        $("#postInfo").hide();
+})
 
 }
 
